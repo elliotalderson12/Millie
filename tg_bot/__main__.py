@@ -93,7 +93,6 @@ for module_name in ALL_MODULES:
 
 
 # do not async
-@restricted
 def send_help(chat_id, text, keyboard=None):
     if not keyboard:
         keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))
@@ -169,7 +168,6 @@ def error_callback(bot, update, error):
 
 
 @run_async
-@restricted
 def help_button(bot: Bot, update: Update):
     query = update.callback_query
     mod_match = re.match(r"help_module\((.+?)\)", query.data)
@@ -220,7 +218,6 @@ def help_button(bot: Bot, update: Update):
 
 
 @run_async
-@restricted
 def get_help(bot: Bot, update: Update):
     chat = update.effective_chat  # type: Optional[Chat]
     args = update.effective_message.text.split(None, 1)
